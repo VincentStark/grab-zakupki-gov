@@ -1,0 +1,5 @@
+# Ignore vim TMP files
+*.swp
+
+# Ignore output file
+zakupki.html

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>zakupki.gov.ru Data</title>
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" media="all" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h3>Данные по госзакупкам (г. Москва)</h3>
+        <table class="table well">
+          <thead>
+            <tr>
+              <th>Информация о заказе</th>
+              <th>Цена</th>
+              <th>Опубликовано</th>
+              <th>Обновлено</th>
+              <th>Доп.</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for entry in entries %}
+            <tr>
+              <td>
+                {{ entry.description_type }} <a href="http://zakupki.gov.ru{{entry.description_number_href}}" target="_blank">{{ entry.description_number }}</a><br/>
+                <a href="http://zakupki.gov.ru{{ entry.description_text_href }}" target="_blank">{{ entry.description_text }}</a><br/>
+                Организация, размещающая заказ: <a href="http://zakupki.gov.ru{{ entry.description_org_href }}" target="_blank">{{ entry.description_org }}</a>
+              </td>
+              <td>{{ entry.price }}</td>
+              <td>{{ entry.published }}</td>
+              <td><a href="http://zakupki.gov.ru{{ entry.updated_href }}" target="_blank">{{ entry.updated }}</a></td>
+              <td>{{ entry.additional }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
